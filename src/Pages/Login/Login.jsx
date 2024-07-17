@@ -1,8 +1,12 @@
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProviders/AuthProviders";
+import { json } from "react-router-dom";
 
 const Login = () => {
     const axiosPublic = useAxiosPublic();
+    const {setUser,setLoading} = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -16,12 +20,18 @@ const Login = () => {
      //for check user is valid or not
      axiosPublic.post('/login',userInfo)
      .then(res => {
-        if(res.data.message === "validUser"){
+        if(res.data){
+          const userDetails = JSON.stringify(res?.data);
             const jwtPin = {pinT:userInfo?.pin};
               axiosPublic.post('/jwt', jwtPin)
               .then(res => {
                 if(res.data.token){
                     localStorage.setItem('access-token',res.data.token);
+                     localStorage.setItem('user',userDetails)
+                    //  localStorage.setItem('user_information',userDetails)
+                    // setLoading(false);
+                    // setUser(localStorage.getItem('user_information'));
+                     setUser(localStorage.getItem(JSON.parse(localStorage.getItem('user'))));
                     reset();
                 }
               })
