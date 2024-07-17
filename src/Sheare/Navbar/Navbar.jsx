@@ -2,6 +2,10 @@ import { NavLink } from "react-router-dom";
 
 
 const Navbar = () => {
+
+     const haldleLogout = () => {
+        localStorage.removeItem('access-token');
+     }
       const navLink = <>
                 {/* 01 */}
                 <NavLink className={({ isActive }) => isActive ? 'font-bold border-[3px] py-2 px-5 border-[rgb(5,172,108)] rounded-lg mr-3 text-[rgb(5,172,108)] ' : 'text-[rgb(5,172,108)] mr-2 font-semibold p-2'} to='/'><li>Home</li></NavLink>
@@ -14,9 +18,11 @@ const Navbar = () => {
       </>
       const navForAuthentication = <>
              {/* 01 */}
-             <NavLink className={({ isActive }) => isActive ? 'font-bold border-[3px] py-2 px-5 border-[rgb(5,172,108)] rounded-lg mr-3 text-[rgb(5,172,108)] ' : 'text-[rgb(5,172,108)] mr-2 font-semibold p-2'} to='/login'><li>User Account</li></NavLink>
+             <NavLink className={({ isActive }) => isActive ? 'font-bold border-[3px] py-2 px-5 border-[rgb(5,172,108)] rounded-lg mr-3 text-[rgb(5,172,108)] ' : 'text-[rgb(5,172,108)] mr-2 font-semibold p-2'} to='/userRegister'><li>User Account</li></NavLink>
              {/* 02 */}
-             <NavLink className={({ isActive }) => isActive ? 'font-bold border-[3px] py-2 px-5 border-[rgb(5,172,108)] rounded-lg mr-3 text-[rgb(5,172,108)] ' : 'text-[rgb(5,172,108)] mr-2 font-semibold p-2'} to='/login'><li>Agent Account</li></NavLink>
+             <NavLink className={({ isActive }) => isActive ? 'font-bold border-[3px] py-2 px-5 border-[rgb(5,172,108)] rounded-lg mr-3 text-[rgb(5,172,108)] ' : 'text-[rgb(5,172,108)] mr-2 font-semibold p-2'} to='/agentRegister'><li>Agent Account</li></NavLink>
+             {/* 02 */}
+             <li><p onClick={haldleLogout} className="text-xl text-[rgb(5,172,108)]">LogOut</p></li>
       </>
     return (
         <div className="navbar bg-base-100 border-2 rounded-xl border-[rgb(5,172,108)]">
