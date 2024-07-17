@@ -21,7 +21,7 @@ const UserRegister = () => {
         .then(res => {
             if(res.data){
                 const jwtPin = {pinT:userInfo?.pin};
-                console.log(jwtPin)
+                //console.log(jwtPin)
                 axiosPublic.post('/jwt',jwtPin)
                 .then(res => {
                     if(res.data.token){

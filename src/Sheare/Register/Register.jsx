@@ -29,7 +29,7 @@ const Register = ({ onSubmit , role}) => {
                     id="mobileNumber"
                     type="text"
                     placeholder="Mobile Number"
-                    className="rounded-md border-black border-2 bg-gray-50 text-gray-800 focus:ring-violet-600 focus:border-violet-600 focus:ring-2 p-2"
+                    className="rounded-md  border-2 border-black bg-gray-50 text-gray-800 focus:ring-violet-600 focus:border-violet-600 focus:ring-2 p-2"
                 />
                 {errors.mobileNumber && <span className="text-red-600">{errors.mobileNumber.message}</span>}
 
